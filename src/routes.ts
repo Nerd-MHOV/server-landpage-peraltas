@@ -12,6 +12,7 @@ routes.post("/rd/get_a_deal", rd.getDeal)
 routes.post("/rd/delete_product", rd.deleteProduct)
 routes.post("/rd/add_product", rd.addProduct)
 routes.post("/rd/change_stage", rd.changeStage)
+routes.post("/rd/sendForm", rd.getFormSendRd);
 
 
 
