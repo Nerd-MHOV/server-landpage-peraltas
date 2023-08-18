@@ -138,7 +138,7 @@ export class RDController {
 
             if(getContact?.total > 0) {
                 const contact = getContact.contacts[0]
-                const dealsIds = [];
+                const dealsIds: string[] = [];
                 for (const dealID of contact.deals) {
                     dealsIds.push(dealID.id)
                 }
@@ -180,12 +180,14 @@ export class RDController {
                 })).data
                 console.log("create deal", createDeal)
                 dealsIds.push(createDeal.id)
-                const updateContact = await rdApiAdm.put("/contacts/"+contact.id, {
-                    contact: {
-                        deals_id: dealsIds
-                    }
-                })
-                console.log("UPDATED CONTACT",updateContact);
+                setTimeout(async () => {
+                    const updateContact = await rdApiAdm.put("/contacts/"+contact.id, {
+                        contact: {
+                            deals_id: dealsIds
+                        }
+                    })
+                    console.log("UPDATED CONTACT",updateContact);
+                }, 3000)
             } else {
                 const createDeal = await rdApiAdm.post("/deals", {
                     deal: {
