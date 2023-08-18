@@ -7,14 +7,14 @@ const rd = new RDController();
 
 
 
-routes.get("/", (req,res) => {
+routes.get("/api-nodejs", (req,res) => {
     res.send("unit ok")
 })
-routes.post("/rd/get_a_deal", rd.getDeal)
-routes.post("/rd/delete_product", rd.deleteProduct)
-routes.post("/rd/add_product", rd.addProduct)
-routes.post("/rd/change_stage", rd.changeStage)
-routes.post("/rd/sendForm", rd.getFormSendRd);
+routes.post("/api-nodejs/get_a_deal", rd.getDeal)
+routes.post("/api-nodejs/delete_product", rd.deleteProduct)
+routes.post("/api-nodejs/add_product", rd.addProduct)
+routes.post("/api-nodejs/change_stage", rd.changeStage)
+routes.post("/api-nodejs/sendForm", rd.getFormSendRd);
 
 
 
