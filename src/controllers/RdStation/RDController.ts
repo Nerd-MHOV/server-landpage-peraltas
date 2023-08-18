@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+import {Request, Response} from "express";
 import axios from "axios";
 
 const rdApi = axios.create({
@@ -99,8 +99,10 @@ export class RDController {
     }
 
 
-    async getFormSendRd(request: Request, response: Response) {app.use(express.json());
-
+    async getFormSendRd(request: Request, response: Response) {
+        const {nome, email, telefone, cidade, mensagem, checkin, checkout, adultos, criancas, pet, idade_crianca_1,
+            idade_crianca_2, idade_crianca_3, idade_crianca_4, porte_pets_1, porte_pets_2, porte_pets_3, porte_pets_4,
+            link, colaborador_id, origem} = request.body;
 
         console.log(request.body);
         response.json(request.body);
