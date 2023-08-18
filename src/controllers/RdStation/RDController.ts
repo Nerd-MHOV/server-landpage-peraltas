@@ -185,6 +185,7 @@ export class RDController {
                         deals_id: dealsIds
                     }
                 })
+                console.log("UPDATED CONTACT",updateContact);
             } else {
                 const createDeal = await rdApiAdm.post("/deals", {
                     deal: {
