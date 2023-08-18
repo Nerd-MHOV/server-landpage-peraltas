@@ -187,7 +187,7 @@ export class RDController {
                         }
                     })
                     console.log("UPDATED CONTACT",updateContact);
-                }, 5000)
+                }, 180000)
             } else {
                 const createDeal = await rdApiAdm.post("/deals", {
                     deal: {
