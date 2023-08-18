@@ -7,7 +7,9 @@ const rd = new RDController();
 
 
 
-
+routes.get("/", (req,res) => {
+    res.send("unit ok")
+})
 routes.post("/rd/get_a_deal", rd.getDeal)
 routes.post("/rd/delete_product", rd.deleteProduct)
 routes.post("/rd/add_product", rd.addProduct)
