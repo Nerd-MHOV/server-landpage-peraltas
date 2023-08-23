@@ -11,11 +11,18 @@ export class ChatGuruController {
         if(!number || !name) return response.json("incorrect params").status(501);
 
         const contact = await CreateContact(number, name);
+        console.log(contact);
+        console.log("__________________________")
+
         await Sleep(1000);
-        await editContext(number, "&var__Entrada_brotaseco=true")
+        const edit = await editContext(number, "&var__Entrada_brotaseco=true")
+        console.log(edit);
+        console.log("__________________________")
+
         await Sleep( 1000);
         const dialogResponse = await Dialog(number, "64e6049402c43618f156d736")
-
+        console.log(dialogResponse);
+        console.log("__________________________")
         return response.json(dialogResponse);
     }
 }
