@@ -14,7 +14,8 @@ export class ChatGuruController {
         console.log(contact);
         console.log("__________________________")
 
-        await Sleep(1000);
+        response.json(contact);
+        await Sleep(180000);
         const edit = await editContext(number, "&var__Entrada_brotaseco=true")
         console.log(edit);
         console.log("__________________________")
@@ -23,6 +24,6 @@ export class ChatGuruController {
         const dialogResponse = await Dialog(number, "64e6049402c43618f156d736")
         console.log(dialogResponse);
         console.log("__________________________")
-        return response.json(dialogResponse);
+        return;
     }
 }
