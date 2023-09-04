@@ -2,11 +2,32 @@ import express from "express";
 import routes from "./routes";
 import cors from "cors";
 import morgan from "morgan"
+import Queue from "./lib/Queue";
+import { createBullBoard } from '@bull-board/api'
+import { ExpressAdapter } from "@bull-board/express";
+import { BullAdapter} from "@bull-board/api/bullAdapter";
+import queue from "./lib/Queue";
+
 
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT_SERVER || 3333;
+
+//bull-board
+const basePath = '/bull/dashboard';
+const serverAdapter = new ExpressAdapter();
+serverAdapter.setBasePath(basePath);
+createBullBoard({
+    serverAdapter,
+    queues: Queue.queues.map(queue => new BullAdapter(queue.bull)),
+    options: {
+        uiConfig: {
+            boardTitle: "Grupo Peraltas",
+        }
+    }
+})
+
 
 //cors
 const whiteList = [
@@ -30,6 +51,8 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"))
 app.use(routes);
+app.use(basePath, serverAdapter.getRouter());
+
 
 //app.use(errorMiddleware);
 app.listen(3333, () => {
