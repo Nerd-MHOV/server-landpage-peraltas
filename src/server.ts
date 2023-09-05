@@ -15,7 +15,7 @@ const app = express();
 const port = process.env.PORT_SERVER || 3333;
 
 //bull-board
-const basePath = '/bull/dashboard';
+const basePath = '/api-nodejs/bull/dashboard';
 const serverAdapter = new ExpressAdapter();
 serverAdapter.setBasePath(basePath);
 createBullBoard({

@@ -7,6 +7,7 @@ import redis from "../config/redis";
 const queues = Object.values(jobs).map(job => ({
     bull: new Queue(job.key, {
         redis: redisConfig,
+        defaultJobOptions: job.options
     }),
     name: job.key,
     handle: job.handle,
