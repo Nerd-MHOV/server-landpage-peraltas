@@ -16,6 +16,8 @@ routes.get("/api-nodejs", (req,res) => {
 routes.post("/api-nodejs/sendForm", rd.getFormSendRd);
 routes.post("/api-nodejs/chat-start", cg.initialMessage);
 routes.get('/api-nodejs/click-to-call-me/:number', callMe.handle)
+routes.get('/api-nodejs/click-to-call-me/:number', callMe.chatGuru)
+
 
 
 

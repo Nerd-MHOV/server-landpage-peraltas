@@ -27,4 +27,29 @@ export class ClickToCallMe {
 
         return response.json('running call')
     }
+
+    async chatGuru(request: Request, response: Response) {
+        const {celular} = request.body;
+
+        const ami = asteriskManager(
+            asteriskConfig.port,
+            asteriskConfig.host,
+            asteriskConfig.user,
+            asteriskConfig.password,
+        )
+
+        ami.action({
+            'action': 'originate',
+            'channel': `SIP/${asteriskConfig.prefix}${celular}@${asteriskConfig.channel_ip}`,
+            'context': 'from-internal',
+            'exten': '600',
+            'priority': 1,
+        }, function(err: any, res: any)  {
+            console.log(err);
+            console.log('------')
+            console.log(res)
+        })
+
+        return response.json('running call')
+    }
 }
